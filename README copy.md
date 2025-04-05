@@ -13,7 +13,7 @@ A Flask-based web application for managing user movie collections. This project 
 ## Project Structure
 
 ```
-movie_project_final_phase/
+movie_web_app/
 ├── app/                    # Main application package
 │   ├── static/            # Static files (CSS, JS, images)
 │   ├── templates/         # HTML templates
