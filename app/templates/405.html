@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Method Not Allowed - MovieWeb App{% endblock %}
+{% block title %}405 Method Not Allowed{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6 text-center">
-        <h1 class="display-1">405</h1>
-        <h2 class="mb-4">Method Not Allowed</h2>
-        <p class="lead">The method is not allowed for the requested URL.</p>
-        <a href="{{ url_for('main.home') }}" class="btn btn-primary">Return to Home</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="error-template">
+                <h1 class="display-1 text-warning">405</h1>
+                <h2 class="display-4">Method Not Allowed</h2>
+                <div class="error-details my-4">
+                    <p class="lead">Sorry, that method is not allowed for this endpoint.</p>
+                    <p>The request method used is not supported for this resource.</p>
+                </div>
+                <div class="error-actions">
+                    <a href="{{ url_for('main.home') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-home me-2"></i>Take Me Home
+                    </a>
+                    <button onclick="history.back()" class="btn btn-outline-primary btn-lg ms-3">
+                        <i class="fas fa-arrow-left me-2"></i>Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %} 

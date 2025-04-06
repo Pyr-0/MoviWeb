@@ -1,7 +1,7 @@
 from flask import Flask
 from app.extensions import db
 from app.controllers.sqlite_data_manager import SQLiteDataManager
-from app.views.routes import main_bp
+from app.views.routes import main_bp, register_error_handlers
 from config.config import config
 
 def create_app(config_name='default'):
@@ -24,5 +24,8 @@ def create_app(config_name='default'):
 	
 	# Register blueprints
 	app.register_blueprint(main_bp)
+	
+	# Register error handlers
+	register_error_handlers(app)
 	
 	return app

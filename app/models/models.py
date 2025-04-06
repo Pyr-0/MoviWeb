@@ -22,7 +22,8 @@ class User(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'created_at': self.created_at.isoformat()
+			'created_at': self.created_at.isoformat(),
+			'movie_count': len(self.movies)
 		}
 
 
@@ -37,6 +38,7 @@ class Movie(db.Model):
 	director = db.Column(db.String(100))
 	year = db.Column(db.Integer)
 	rating = db.Column(db.Float)
+	poster_url = db.Column(db.String(255))
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 	created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -52,6 +54,7 @@ class Movie(db.Model):
 			'director': self.director,
 			'year': self.year,
 			'rating': self.rating,
+			'poster_url': self.poster_url,
 			'user_id': self.user_id,
 			'created_at': self.created_at.isoformat()
 		} 

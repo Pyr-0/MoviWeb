@@ -13,7 +13,7 @@ class Config:
 	SECRET_KEY = os.urandom(24)
 	
 	# Database configuration
-	DATABASE_PATH = os.path.join(instance_path, 'movies.db')
+	DATABASE_PATH = os.path.join(instance_path, 'moviwebapp.db')
 	
 	# Debug mode
 	DEBUG = True
@@ -24,7 +24,7 @@ class Config:
 
 class DevelopmentConfig(Config):
 	"""Development configuration."""
-	SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(instance_path, "movie_web_app.db")}'
+	SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(instance_path, "moviwebapp.db")}'
 
 class TestingConfig(Config):
 	"""Testing configuration."""
