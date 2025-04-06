@@ -25,6 +25,8 @@ class Config:
 class DevelopmentConfig(Config):
 	"""Development configuration."""
 	SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(instance_path, "moviwebapp.db")}'
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
+	SQLALCHEMY_ECHO = True  # This will help debug SQL queries
 
 class TestingConfig(Config):
 	"""Testing configuration."""
