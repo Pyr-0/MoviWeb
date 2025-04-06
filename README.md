@@ -107,3 +107,62 @@ flake8 .  # Lint code
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](assets/home.png)
+*The welcoming home page of MoviWeb App*
+
+### Users Management
+![Users Page](assets/users.png)
+*View and manage all users in the system*
+
+### Add New User
+![Add User](assets/add_user.png)
+*Form to add a new user to the system*
+
+### User's Movies
+![Movies List](assets/movies.png)
+*View and manage a user's movie collection*
+
+### Add New Movie
+![Add Movie](assets/add_movie.png)
+*Form to add a new movie to a user's collection*
+
+## 🔑 Key Components
+
+- **DataManager Interface**: Abstract base class for data management
+- **SQLiteDataManager**: Implementation for SQLite database operations
+- **OMDbService**: Service for fetching movie data from OMDb API
+- **RESTful Routes**: Well-structured API endpoints for CRUD operations
+- **Error Handling**: Comprehensive error handling and user feedback
+
+## 🚀 Getting Started
+
+1. Clone the repository
+2. Install dependencies: `pip install -r requirements.txt`
+3. Set up environment variables in `.env`
+4. Initialize the database: `python init_db.py`
+5. Run the application: `python app.py`
+
+## 📚 Learning Outcomes
+
+This project demonstrates:
+- Web application development with Flask
+- Database design and implementation
+- API integration
+- Error handling and testing
+- Clean code architecture
+- User interface design
+
+## 🔒 Security
+
+- Environment variables for sensitive data
+- Input validation and sanitization
+- Secure database operations
+- Error handling without exposing sensitive information
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

@@ -26,10 +26,19 @@
                             </p>
                         </div>
                         <div class="card-footer bg-transparent">
-                            <a href="{{ url_for('main.user_movies', user_id=user.id) }}" 
-                               class="btn btn-primary w-100">
-                                <i class="fas fa-list"></i> View Movies
-                            </a>
+                            <div class="d-grid gap-2">
+                                <a href="{{ url_for('main.user_movies', user_id=user.id) }}" 
+                                   class="btn btn-primary">
+                                    <i class="fas fa-list"></i> View Movies
+                                </a>
+                                <form action="{{ url_for('main.delete_user', user_id=user.id) }}" 
+                                      method="POST" 
+                                      onsubmit="return confirm('Are you sure you want to delete this user and all their movies?');">
+                                    <button type="submit" class="btn w-100" style="background-color: #ff9999; border-color: #ff9999; color: white;">
+                                        <i class="fas fa-trash"></i> Delete User
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

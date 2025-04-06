@@ -95,4 +95,22 @@ class SQLiteDataManager(DataManagerInterface):
 			return True
 		except Exception:
 			self.db.session.rollback()
+			return False
+	
+	def delete_user(self, user_id: int) -> bool:
+		"""Delete a user and all their movies from the database."""
+		try:
+			user = User.query.get(user_id)
+			if not user:
+				return False
+			
+			# Delete all movies associated with the user
+			Movie.query.filter_by(user_id=user_id).delete()
+			
+			# Delete the user
+			self.db.session.delete(user)
+			self.db.session.commit()
+			return True
+		except Exception:
+			self.db.session.rollback()
 			return False 

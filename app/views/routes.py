@@ -249,6 +249,21 @@ def delete_movie(user_id, movie_id):
 	
 	return redirect(url_for('main.user_movies', user_id=user_id))
 
+@main_bp.route('/users/<int:user_id>/delete', methods=['POST'])
+def delete_user(user_id):
+    """Delete a user and all their movies"""
+    try:
+        success = data_manager.delete_user(user_id)
+        if success:
+            flash('User and all their movies have been deleted successfully!', 'success')
+        else:
+            flash('Error deleting user!', 'error')
+    except Exception as e:
+        flash('An error occurred while deleting the user.', 'error')
+        current_app.logger.error(f"Error in delete_user route: {str(e)}")
+    
+    return redirect(url_for('main.list_users'))
+
 @main_bp.route('/simulate-error')
 def simulate_error():
 	"""Route to simulate a 500 error for testing"""
