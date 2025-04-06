@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Bad Request - MovieWeb App{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h1 class="display-1">400</h1>
+        <h2 class="mb-4">Bad Request</h2>
+        <p class="lead">The server could not understand your request.</p>
+        <a href="{{ url_for('main.home') }}" class="btn btn-primary">Return to Home</a>
+    </div>
+</div>
+{% endblock %} 

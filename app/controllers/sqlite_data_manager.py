@@ -1,7 +1,7 @@
 from typing import List, Dict, Optional
 from sqlalchemy.exc import SQLAlchemyError
-from ..models.models import db, User, Movie
-from .data_manager_interface import DataManagerInterface
+from app.models.models import db, User, Movie
+from app.controllers.data_manager_interface import DataManagerInterface
 
 
 class SQLiteDataManager(DataManagerInterface):
@@ -47,7 +47,10 @@ class SQLiteDataManager(DataManagerInterface):
 			Optional[Dict]: The created user data or None if failed
 		"""
 		try:
-			new_user = User(**user_data)
+			# Create a new user with explicit attribute setting
+			new_user = User()
+			new_user.name = user_data['name']
+			
 			db.session.add(new_user)
 			db.session.commit()
 			return new_user.to_dict()
@@ -66,8 +69,14 @@ class SQLiteDataManager(DataManagerInterface):
 			Optional[Dict]: The created movie data or None if failed
 		"""
 		try:
-			movie_data['user_id'] = user_id
-			new_movie = Movie(**movie_data)
+			# Create a new movie with explicit attribute setting
+			new_movie = Movie()
+			new_movie.title = movie_data['title']
+			new_movie.director = movie_data.get('director')
+			new_movie.year = movie_data.get('year')
+			new_movie.rating = movie_data.get('rating')
+			new_movie.user_id = user_id
+			
 			db.session.add(new_movie)
 			db.session.commit()
 			return new_movie.to_dict()

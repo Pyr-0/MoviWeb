@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Gone - MovieWeb App{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h1 class="display-1">410</h1>
+        <h2 class="mb-4">Gone</h2>
+        <p class="lead">The requested resource is no longer available and will not be available again.</p>
+        <a href="{{ url_for('main.home') }}" class="btn btn-primary">Return to Home</a>
+    </div>
+</div>
+{% endblock %} 

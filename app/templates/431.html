@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Request Header Fields Too Large - MovieWeb App{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h1 class="display-1">431</h1>
+        <h2 class="mb-4">Request Header Fields Too Large</h2>
+        <p class="lead">The server is unwilling to process the request because its header fields are too large.</p>
+        <a href="{{ url_for('main.home') }}" class="btn btn-primary">Return to Home</a>
+    </div>
+</div>
+{% endblock %} 

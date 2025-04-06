@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Movie - MovieWeb App{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Delete Movie</h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>Are you sure you want to delete the movie "{{ movie.title }}"? This action cannot be undone.</p>
+                </div>
+                <form method="POST">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-danger">Delete Movie</button>
+                        <a href="{{ url_for('main.user_movies', user_id=user_id) }}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

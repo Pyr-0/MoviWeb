@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List, Dict, Optional
 
 
 class DataManagerInterface(ABC):
@@ -9,7 +10,7 @@ class DataManagerInterface(ABC):
 	"""
 
 	@abstractmethod
-	def get_all_users(self):
+	def get_all_users(self) -> List[Dict]:
 		"""
 		Retrieve all users from the data source.
 		Returns:
@@ -18,7 +19,7 @@ class DataManagerInterface(ABC):
 		pass
 
 	@abstractmethod
-	def get_user_movies(self, user_id):
+	def get_user_movies(self, user_id: int) -> List[Dict]:
 		"""
 		Retrieve all movies for a specific user.
 		Args:
@@ -29,7 +30,7 @@ class DataManagerInterface(ABC):
 		pass
 
 	@abstractmethod
-	def add_user(self, user_data):
+	def add_user(self, user_data: Dict) -> Optional[Dict]:
 		"""
 		Add a new user to the data source.
 		Args:
@@ -40,7 +41,7 @@ class DataManagerInterface(ABC):
 		pass
 
 	@abstractmethod
-	def add_movie(self, user_id, movie_data):
+	def add_movie(self, user_id: int, movie_data: Dict) -> Optional[Dict]:
 		"""
 		Add a new movie to a user's collection.
 		Args:
@@ -52,7 +53,7 @@ class DataManagerInterface(ABC):
 		pass
 
 	@abstractmethod
-	def update_movie(self, user_id, movie_id, movie_data):
+	def update_movie(self, user_id: int, movie_id: int, movie_data: Dict) -> Optional[Dict]:
 		"""
 		Update an existing movie in a user's collection.
 		Args:
@@ -65,7 +66,7 @@ class DataManagerInterface(ABC):
 		pass
 
 	@abstractmethod
-	def delete_movie(self, user_id, movie_id):
+	def delete_movie(self, user_id: int, movie_id: int) -> bool:
 		"""
 		Delete a movie from a user's collection.
 		Args:
