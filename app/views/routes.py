@@ -81,7 +81,19 @@ def add_user():
 
 @main_bp.route('/users/<int:user_id>/movies/add', methods=['GET', 'POST'])
 def add_movie(user_id):
-	"""Add a new movie for a user"""
+	"""Add a new movie for a user
+	
+	This route handles both displaying the add movie form and processing the form submission.
+	When a movie title is submitted, it first attempts to fetch data from OMDb.
+	If OMDb data is not available, it uses the manually entered data.
+	
+	Args:
+		user_id: The ID of the user adding the movie
+		
+	Returns:
+		On GET: Renders the add movie form
+		On POST: Redirects to the user's movies page with a success/error message
+	"""
 	if request.method == 'POST':
 		title = request.form.get('title')
 		if not title:
@@ -89,11 +101,9 @@ def add_movie(user_id):
 			return redirect(url_for('main.add_movie', user_id=user_id))
 		
 		# Try to fetch movie data from OMDb
-		current_app.logger.info(f"Attempting to fetch movie data for: {title}")
 		movie_data = OMDbService.search_movie(title)
 		
 		if movie_data:
-			current_app.logger.info(f"Successfully fetched movie data: {movie_data}")
 			# Use data from OMDb
 			movie = data_manager.add_movie(
 				user_id=user_id,
@@ -108,12 +118,6 @@ def add_movie(user_id):
 			else:
 				flash('Error adding movie', 'error')
 		else:
-			current_app.logger.warning(f"Failed to fetch movie data for: {title}")
-			# Check if OMDb API key is set
-			if not current_app.config['OMDB_API_KEY'] or current_app.config['OMDB_API_KEY'] == 'your_api_key_here':
-				flash('OMDb API key not configured. Please contact the administrator.', 'error')
-				return redirect(url_for('main.add_movie', user_id=user_id))
-			
 			# Use manually entered data
 			director = request.form.get('director', '')
 			year = request.form.get('year')
