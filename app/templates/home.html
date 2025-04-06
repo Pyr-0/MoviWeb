@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Home - MovieWeb App{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1 class="display-4">Welcome to MovieWeb App</h1>
-    <p class="lead">Manage your favorite movies and share them with others!</p>
-    <hr class="my-4">
-    <p>Get started by viewing users or adding a new user to the system.</p>
-    <div class="mt-4">
-        <a href="{{ url_for('main.list_users') }}" class="btn btn-primary btn-lg">View Users</a>
-        <a href="{{ url_for('main.add_user') }}" class="btn btn-success btn-lg ms-2">Add User</a>
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-4 fw-bold">Welcome to MovieWeb App</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Manage your favorite movies and share them with others!</p>
+        <p class="text-muted mb-4">Get started by viewing users or adding a new user to the system.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{{ url_for('main.list_users') }}" class="btn btn-primary btn-lg px-4 gap-3">View Users</a>
+            <a href="{{ url_for('main.add_user') }}" class="btn btn-success btn-lg px-4">Add User</a>
+        </div>
     </div>
 </div>
 {% endblock %} 

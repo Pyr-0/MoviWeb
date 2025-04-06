@@ -1,8 +1,4 @@
 import os
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 # Get the absolute path to the instance folder
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -12,16 +8,22 @@ instance_path = os.path.join(basedir, 'instance')
 os.makedirs(instance_path, exist_ok=True)
 
 class Config:
-	"""Base configuration class."""
-	SECRET_KEY = os.getenv('SECRET_KEY', 'dev')
-	SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', f'sqlite:///{os.path.join(instance_path, "movie_web_app.db")}')
-	SQLALCHEMY_TRACK_MODIFICATIONS = False
-	OMDB_API_KEY = os.getenv('OMDB_API_KEY')
+	"""Base configuration"""
+	# Generate a random secret key
+	SECRET_KEY = os.urandom(24)
+	
+	# Database configuration
+	DATABASE_PATH = os.path.join(instance_path, 'movies.db')
+	
+	# Debug mode
+	DEBUG = True
+	
+	# OMDb API configuration
+	OMDB_API_KEY = os.getenv('OMDB_API_KEY', 'your_api_key_here')  # Replace with your actual API key
 	OMDB_API_URL = 'http://www.omdbapi.com/'
 
 class DevelopmentConfig(Config):
 	"""Development configuration."""
-	DEBUG = True
 	SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(instance_path, "movie_web_app.db")}'
 
 class TestingConfig(Config):
